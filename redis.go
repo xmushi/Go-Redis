@@ -169,6 +169,8 @@ type Client interface {
 
 	// Redis DEL command.
 	Del(key string) (result bool, err Error)
+	
+	Del(key string,key2 string) (result bool, err Error)
 
 	// Redis RANDOMKEY command.
 	Randomkey() (result string, err Error)
