@@ -945,11 +945,11 @@ func (c *syncClient) Publish(arg0 string, arg1 []byte) (rcvCnt int64, err Error)
 }
 
 // Redis HDEL command.
-func (c *syncClient) HDel(arg0 string) (result bool, err Error) {
+func (c *syncClient) HDel(arg0 string, arg1 string) (result bool, err Error) {
 	arg0bytes := []byte(arg0)
 
 	var resp Response
-	resp, err = c.conn.ServiceRequest(&HDEL, [][]byte{arg0bytes})
+	resp, err = c.conn.ServiceRequest(&HDEL, [][]byte{arg0bytes, []byte(arg1)})
 	if err == nil {
 		result = resp.GetBooleanValue()
 	}
